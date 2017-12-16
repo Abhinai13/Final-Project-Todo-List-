@@ -1,6 +1,8 @@
 <?php
+require('./config/config.php');
 session_start();
 
+// checking is session exists
 if(isset($_SESSION['user'])!="")
 {
 	$user = $_SESSION['user'];

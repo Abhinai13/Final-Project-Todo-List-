@@ -12,8 +12,7 @@
 		<link href="resources/css/style.css" rel="stylesheet" type="text/css" media="screen">
 		<script type="text/javascript" src="resources/js/login.js"></script>
 	</head>
-	<body>
-		
+	<body>		
 		<div class="signin-form">
 			<div class="container">		
 				
@@ -22,7 +21,7 @@
 					<h2 class="form-signin-heading">Log In </h2><hr />
 					
 					<div id="error">
-						<!-- error will be shown here ! -->
+						<!-- error will be shown here -->
 					</div>
 					
 					<div class="form-group">

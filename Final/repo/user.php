@@ -1,5 +1,5 @@
 <?php
-require_once '../db/model.php';  
+require_once(__ROOT__.'/db/model.php');  
 class user extends model {
     public $id;
     public $firstname;

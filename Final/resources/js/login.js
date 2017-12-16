@@ -15,9 +15,11 @@ $('document').ready(function()
        messages:
 	   {
             password:{
-                      required: "Please enter your password"
-                     },
-            user_email: "Please enter your email address",
+               required: "Please enter your password"
+            },
+            user_email:{
+               required: "Please enter your email address"
+            },           
        },
 	   submitHandler: submitForm	
        });  
@@ -40,7 +42,9 @@ $('document').ready(function()
 			},
 			success :  function(response)
 			   {						
-					if(response=="ok"){									
+					if(response =="ok"){
+					console.log("response: " + response);
+					//if(response.indexOf("ok")>0)
 						$("#btn-login").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; Signing In ...');
 						setTimeout('window.location.href = "view/home.php"; ',4000);
 					}

@@ -24,18 +24,20 @@ $('document').ready(function()
        messages:
 	   {
             firstname:{
-                      required: "Please enter your First Name"
-                     },
+            	required: "Please enter your First Name"
+            },
             lastname:{
-            		required: "Please enter your Last Name"
+            	required: "Please enter your Last Name"
             },
             password:{
-                      required: "Please enter your password"
+            	required: "Please enter your password"
             },
             confirm_password:{
-                      required: "Please enter your password"
-            },         
-            user_email: "Please enter your email address",
+            	required: "Please enter your password"
+            }, 
+            user_email:{
+            	required: "Please enter your email address"
+            }                    
        },
 	   submitHandler: submitForm	
        });  

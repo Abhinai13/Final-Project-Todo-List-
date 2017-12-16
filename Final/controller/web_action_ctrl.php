@@ -1,39 +1,47 @@
 <?php
-
+	require('../config/config.php');
 	$action = $_POST["actionType"];	
 	//action login implementation
-	if($action == "LOGIN"){
-		require_once '../repo/users.php';
-		session_start();
+	if($action == "LOGIN"){		
+		require_once(__ROOT__.'/repo/users.php'); 
+		require_once(__ROOT__.'/util/crypto.php'); 
+		session_start();		
 		$array = array( 
-		    "email" => $_POST["user_email"], 
-		    "password" => $_POST["password"]
-		); 		
+		    "email" => $_POST["user_email"]
+		); 
 		$record = users::findOneBy($array);
 		if(is_array($record)) {
-			//echo "login successful ..";			
-			$arrUser = array(
+			//found user in database. check password matches;
+			$dbpassword = $record["password"];
+			if(password_verify($_POST["password"], $dbpassword)){
+				$arrUser = array(
 				"id"=> $record["id"],
 				"lastname"=> $record["lastname"],
 				"firstname"=> $record["firstname"],
 				"email"=>$record["email"]
 			);			
 			echo "ok";
-			$_SESSION["user"] = $arrUser;			
+			$_SESSION["user"] = $arrUser;
+			}
+			else{
+				echo "  Password did not match.";	
+			}
+						
 		} else {			
-			echo "  Invalid email or password. Not found.";			
+			echo "  Invalid email address. Not found.";			
 		}
 	}
 	// action registering user implementation
-	if($action == "REGISTER"){
-		require_once '../repo/user.php';
+	if($action == "REGISTER"){		
+		require_once(__ROOT__.'/repo/user.php'); 
+		require_once(__ROOT__.'/util/crypto.php'); 
 		$user = new user();
 			
 			$user ->id="";
 			$user ->firstname = $_POST["firstname"];
 			$user ->lastname = $_POST["lastname"] ;
-			$user ->email=$_POST["user_email"];
-			$user ->password = $_POST["password"] ;
+			$user ->email=$_POST["user_email"];			
+			$user ->password = crypto::secured_hash($_POST["password"]);
 			$date = new DateTime();
 			$strDate = $date->format('Y-m-d H:i:s');			
 			$user ->create_date= $strDate;

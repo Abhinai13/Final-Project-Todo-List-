@@ -1,8 +1,6 @@
 <?php
 require_once '../repo/user.php';
 
-
-
 // Following code for inseting new record...
 /*
 	$user = new user();

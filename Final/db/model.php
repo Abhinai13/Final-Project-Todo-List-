@@ -1,6 +1,7 @@
 <?php
 try {
-    require_once '../conn/dbConn.php';
+   // require_once '../conn/dbConn.php';
+    require_once(__ROOT__.'/conn/dbConn.php'); 
 } catch (Exception $e) {
   echo 'Connection failed: ' . $e->getMessage();
 }
@@ -74,11 +75,11 @@ class model {
         $a = get_object_vars($this);  
         $tableName = $a['tableName'];
         $sql = "DELETE FROM ".$tableName."  WHERE  id = ".$this-> id;
-        echo "Delete statement : ". $sql;    
+       // echo "Delete statement : ". $sql;    
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $statement->execute();
-        echo 'Successfully  DELETED record: ' . $this->id;
+        //echo 'Successfully  DELETED record: ' . $this->id;
     }
 }
 ?>
