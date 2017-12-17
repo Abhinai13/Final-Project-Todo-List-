@@ -60,13 +60,13 @@ $('document').ready(function()
 			},
 			success :  function(response)
 			   {						
-					if(response=="ok"){									
+					if(response.indexOf('ok') > 0){									
 						$("#btn-register").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; Registering ...');
 						setTimeout('window.location.href = "/todo"; ',4000);
 					}
 					else{									
 						$("#error").fadeIn(1000, function(){						
-						$("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+response+' !</div>');
+						$("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+response+'</div>');
 						$("#btn-register").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Register');
 						});
 					}

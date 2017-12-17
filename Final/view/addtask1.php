@@ -17,36 +17,24 @@
 		<div class="signin-form">
 			<div class="container">				
 				<form class="form-signin" method="post" id="register-form">					
-					<h2 class="form-signin-heading">Register </h2><hr />					
+					<h2 class="form-signin-heading">New Task </h2><hr />					
 					<div id="error">
 						<!-- error will be shown here -->
 					</div>
 	
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="First Name" name="firstname" id="firstname" />
+						<input type="text" class="form-control" placeholder="Title" name="title" id="title" />
 						<span id="check-e"></span>
 					</div>					
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Last Name" name="lastname" id="lastname" />
+					<div class="form-group">					
+						<textarea class="form-control" placeholder="Description" name="description" rows="6" id="description"></textarea>
 						<span id="check-e"></span>
-					</div>
-					<div class="form-group">
-						<input type="email" class="form-control" placeholder="Email address" name="user_email" id="email" />
-						<span id="check-e"></span>
-					</div>					
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Password" name="password" id="password" />
-					</div>	
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" id="confirm_password" />
-					</div>					
+					</div>							
 					<hr />					
 					<div class="form-group">
-						<button type="submit" class="btn btn-default" name="btn-register" id="btn-register">
-						<span class="glyphicon glyphicon-log-in"></span> &nbsp; Register</button>
-						<input type="hidden" name="actionType" value="REGISTER"/>
+						<button type="button" class="btn btn-info btn-md" name="btn-add-task" id="btn-add-task"><span class="glyphicon glyphicon-plus"></span>  ADD TASK</button>
+						<input type="hidden" name="actionType" value="ADDTASK"/>
 					</div>				
-				</form>
 			</div>			
 		</div>		
 		<script src="/todo/resources/js/bootstrap.min.js"></script>

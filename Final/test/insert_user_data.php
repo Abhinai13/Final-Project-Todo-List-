@@ -1,6 +1,7 @@
 <?php
 try {
-	require_once '../conn/dbConn.php';
+	require('../config/config.php');	
+	require_once(__ROOT__.'/conn/dbConn.php');
 } catch (Exception $e) {
   echo 'Connection failed: ' . $e->getMessage();
 }

@@ -42,15 +42,16 @@ $('document').ready(function()
 			},
 			success :  function(response)
 			   {						
-					if(response =="ok"){
-					console.log("response: " + response);
-					//if(response.indexOf("ok")>0)
+					//alert("respose:" + response);
+					//if(response == 'ok'){
+					//console.log("response: " + response);
+					if(response.indexOf("ok")>0){
 						$("#btn-login").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; Signing In ...');
-						setTimeout('window.location.href = "view/home.php"; ',4000);
+						setTimeout('window.location.href = "/todo/view/home.php"; ',4000);
 					}
 					else{									
 						$("#error").fadeIn(1000, function(){						
-						$("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+response+' !</div>');
+						$("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+response+'</div>');
 						$("#btn-login").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In');
 						});
 					}

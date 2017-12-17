@@ -7,10 +7,9 @@ if(isset($_SESSION['user'])!="")
 {
 	$user = $_SESSION['user'];
 	//echo "session found ...". $user;
-	header("Location: view/home.php");
-	//require_once 'todolist.php';
+	header("Location: view/home.php");	
 }else{
 	//echo "session not found redirecting to login";
-	require_once './view/login.php';
+	require_once(__ROOT__.'/view/login.php');
 }
 ?>

@@ -57,6 +57,8 @@
 	// form GET request handling...
 	if($action == ""){
 		$action = $GET["actionType"];	
+
+		//Signout implementation
 		if($action == "SIGNOUT"){
 
 		}

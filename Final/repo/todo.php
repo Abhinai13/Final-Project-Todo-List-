@@ -1,7 +1,6 @@
-<?php
-//require_once '../db/model.php';  
+<?php 
 require_once(__ROOT__.'/db/model.php'); 
-class user extends model {
+class todo extends model {
     public $id;
     public $userid;
     public $title;

@@ -1,5 +1,6 @@
 <?php
-require_once '../repo/user.php';
+	require('../config/config.php');	
+	require_once(__ROOT__.'/repo/user.php');
 
 // Following code for inseting new record...
 /*
