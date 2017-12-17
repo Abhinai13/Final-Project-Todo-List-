@@ -74,7 +74,7 @@ class model {
         $a = get_object_vars($this);  
         $tableName = $a['tableName'];
         $sql = "DELETE FROM ".$tableName."  WHERE  id = ".$this-> id;
-       // echo "Delete statement : ". $sql;    
+        echo "Delete statement : ". $sql;    
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $statement->execute();

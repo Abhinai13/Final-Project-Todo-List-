@@ -43,7 +43,8 @@ $("#addtask_form").validate({
 			   {						
 					if(response.indexOf('ok') > 0){									
 						$("#btn-add-task").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; adding ...');
-						setTimeout('window.location.href = "/todo/view/home.php"; ',2000);
+						//setTimeout('window.location.href = "/todo/view/home.php"; ',2000);
+						$("#error").html('<div class="alert alert-success"> <span class="glyphicon glyphicon-ok"></span> &nbsp; Task Added. Please continue to with additional tasks.</div>');						
 					}
 					else{									
 						$("#error").fadeIn(1000, function(){						

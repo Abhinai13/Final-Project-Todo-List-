@@ -74,7 +74,7 @@
 			if ($array["id"] > 0){
 				echo "ok";
 			}else{
-				echo " Error occured adding task. ";	
+				echo " Error occured adding task.";	
 			}
 		}
 		if($action == "EDITTASK"){	
@@ -87,20 +87,27 @@
 			$todo ->title = $_POST["title"];
 			$todo ->body = $_POST["description"];
 			$todo ->create_date= $_POST["task_create_date"];
-			$check = $_POST["complete"];
+			$check = 0;	
+			if (isset($_POST["complete"]) && $_POST["complete"] == 1){
+				$check = 1;			
+			}
+			
 			$strComplete = ($check == 1) ? $check: 0;			
-			echo "complete...".$strComplete;
+			//echo "complete...".$strComplete;
 			$todo ->complete=$strComplete;	
 			$date = new DateTime();
 			$strDate = $date->format('Y-m-d H:i:s');		
 			$todo ->update_date= $strDate;
-			$todo ->save();				
-			//$array= get_object_vars ($todo);				
-			/*if ($array["id"] > 0){
-				echo "ok";
-			}else{
-				echo " Error occured adding task. ";	
-			}*/
+			$todo ->save();	
+			echo "ok";
+		}
+		if($action == "DELETETASK"){
+			$id = $_POST["task_id"];
+			require_once(__ROOT__.'/repo/todo.php'); 
+			$todo = new todo();
+			$todo ->id=$id;
+			$todo->delete();
+			echo "ok";
 		}
 	}else{
 		
@@ -114,7 +121,6 @@
 			session_unset();
 			session_destroy();				
 			echo "ok";
-		}
+		}		
 	}
-
 ?>

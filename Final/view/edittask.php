@@ -38,7 +38,7 @@
 	      	  <input type="hidden" name="task_id" value="<?php echo $record["id"];?>" />
 	      	  <input type="hidden" name="task_create_date" value="<?php echo $record["create_date"];?>" />	 
 			  <button type="submit" class="btn btn-primary btn-md" name="btn-edit-task" id="btn-edit-task"><span class="glyphicon glyphicon-pencil"></span>  SAVE</button>
-		      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	  		</div>
 	  	</div>
 	  	<script src="/todo/resources/js/edittask.js"></script>

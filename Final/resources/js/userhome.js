@@ -18,23 +18,20 @@ function editTask(id){
     return false;
 }
 
-function deleteTask(){
-	//alert("here");
-	/*
-    $.ajax({
-        type: "get",
-        url: "like_audio",
-        data: {
-            aId:aId
-        },
-        success: function (data){
-            alert(data);
-        },
-        error: function (xhr, ajaxOptions, thrownError){
-
-        }
+function deleteTask(id){
+	var $deletemodal = $('#delete_task_id');
+    $deletemodal.load('/todo/view/deletetask.php',{'task_id':id, 'id2': '2'},
+    function(){
+        $deletemodal.modal('show');
     });
-    */
+    return false;
+}
+function getInformation(){
+    var $infomodal = $('#user_info_id');
+    $infomodal.load('/todo/view/userinfo.php',{'id1':'1', 'id2': '2'},
+    function(){
+        $infomodal.modal('show');
+    });
     return false;
 }
 
