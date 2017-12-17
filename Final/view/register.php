@@ -38,7 +38,7 @@
 						<input type="password" class="form-control" placeholder="Password" name="password" id="password" />
 					</div>	
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" id="confirm_password" />
+						<input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password" id="confirm_password" onChange="checkPasswordMatch();" />
 					</div>					
 					<hr />					
 					<div class="form-group">

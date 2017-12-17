@@ -1,5 +1,6 @@
 $('document').ready(function()
 { 
+	$("#confirm_password").keyup(checkPasswordMatch);
      /* validation */
 	 $("#register-form").validate({
       rules:
@@ -12,9 +13,11 @@ $('document').ready(function()
 			},
 			password: {
 			required: true,
+			minlength: 6,
 			},
 			confirm_password: {
 			required: true,
+			minlength: 6,
 			},
 			user_email: {
             required: true,
@@ -40,6 +43,8 @@ $('document').ready(function()
             }                    
        },
 	   submitHandler: submitForm	
+
+
        });  
 	   /* validation */
 	   
@@ -72,7 +77,16 @@ $('document').ready(function()
 					}
 			  }
 			});
-				return false;
+			return false;
 		}
-	   /* login submit */
+
+		function checkPasswordMatch() {
+    		var password = $("#password").val();
+    		var confirmPassword = $("#confirm_password").val();
+		    if (password != confirmPassword)
+		        $("#error").html("Passwords do not match!");
+		    else
+		        $("#error").html("Passwords match.");
+		}
+	  
 });

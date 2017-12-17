@@ -64,7 +64,7 @@ class model {
          }
         $c = rtrim($c,", ");
         $sql = "UPDATE ".$tableName." SET ".$c." WHERE id = ". $this -> id;
-        echo "Update statement : ". $sql;  
+       // echo "Update statement : ". $sql;  
         return $sql;        
     }
     

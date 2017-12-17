@@ -12,7 +12,7 @@
 		    <div class="modal-body">
 		    
 		    	<div id="error">
-						<!-- error will be shown here -->
+					<!-- error will be shown here -->
 				</div>
 		    	<div class="form-group">
 		    		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
@@ -28,10 +28,12 @@
 				</div>			
 				
 			</div>	     
-	      <div class="modal-footer">	 
-			  <button type="submit" class="btn btn-primary btn-md" name="btn-add-task" id="btn-add-task"><span class="glyphicon glyphicon-plus"></span>  ADD </button>
+	      <div class="modal-footer">
+	      	 <input type="hidden" name="actionType" value="ADDTASK" />
+			 <button type="submit" class="btn btn-primary btn-md" name="btn-add-task" id="btn-add-task"><span class="glyphicon glyphicon-plus"></span>  ADD </button> 
 		      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	  		</div>
 	  	</div>
-	  	</form>
+		<script src="/todo/resources/js/addtask.js"></script>
+	  </form>
  </div>
