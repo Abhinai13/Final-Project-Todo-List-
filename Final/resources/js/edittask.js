@@ -42,7 +42,7 @@ $("#edittask_form").validate({
 			success :  function(response)
 			   {						
 					if(response.indexOf('ok') > 0){									
-						$("#btn-edit-task").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; saving ...');
+						$("#btn-edit-task").html('<img src="/todo/resources/img/btn-ajax-loader.gif" /> &nbsp; saving ...');
 						setTimeout('window.location.href = "/todo/view/home.php"; ',2000);
 					}
 					else{									
