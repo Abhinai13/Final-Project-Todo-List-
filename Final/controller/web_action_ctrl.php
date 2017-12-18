@@ -1,35 +1,59 @@
 <?php
 	require('../config/config.php');
 	if(!empty($_POST)){
-		$action = $_POST["actionType"];	
+		$action = $_POST["actionType"];
+		//echo "$action:".$action;	
 		//action login implementation
 		if($action == "LOGIN"){		
 			require_once(__ROOT__.'/repo/users.php'); 
 			require_once(__ROOT__.'/util/crypto.php'); 
 			session_start();		
-			$array = array( 
-			    "email" => $_POST["user_email"]
-			); 
-			$record = users::findOneBy($array);
-			if(is_array($record)) {
-				//found user in database. check password matches;
-				$dbpassword = $record["password"];
-				if(password_verify($_POST["password"], $dbpassword)){
+			
+			if(__ENCRYPT == "ON"){
+				$array = array( 
+			    	"email" => $_POST["user_email"]
+				); 
+				$record = users::findOneBy($array);
+				if(is_array($record)) {
+					//found user in database. check password matches;
+					$dbpassword = $record["password"];
+					if(password_verify($_POST["password"], $dbpassword)){
+						$arrUser = array(
+						"id"=> $record["id"],
+						"lastname"=> $record["lastname"],
+						"firstname"=> $record["firstname"],
+						"email"=>$record["email"]
+					);			
+					echo "ok";
+					$_SESSION["user"] = $arrUser;
+					}
+					else{
+						echo "  Password did not match.";	
+					}
+								
+				} else {			
+					echo "  Invalid email address. Not found.";			
+				}
+			}else{
+				$array = array( 
+			    	"email" => $_POST["user_email"],
+			    	"password"=>$_POST["password"]
+				); 
+				$record = users::findOneBy($array);
+				if(is_array($record)) {
 					$arrUser = array(
-					"id"=> $record["id"],
-					"lastname"=> $record["lastname"],
-					"firstname"=> $record["firstname"],
-					"email"=>$record["email"]
-				);			
-				echo "ok";
-				$_SESSION["user"] = $arrUser;
+						"id"=> $record["id"],
+						"lastname"=> $record["lastname"],
+						"firstname"=> $record["firstname"],
+						"email"=>$record["email"]
+					);	
+					echo "ok";
+					$_SESSION["user"] = $arrUser;	
 				}
-				else{
-					echo "  Password did not match.";	
+				else {			
+					echo "  Invalid email address or password.";			
 				}
-							
-			} else {			
-				echo "  Invalid email address. Not found.";			
+
 			}
 		}
 		// action registering user implementation
@@ -40,8 +64,12 @@
 			$user ->id="";
 			$user ->firstname = $_POST["firstname"];
 			$user ->lastname = $_POST["lastname"] ;
-			$user ->email=$_POST["user_email"];			
-			$user ->password = crypto::secured_hash($_POST["password"]);
+			$user ->email=$_POST["user_email"];		
+			if(__ENCRYPT == "ON"){
+				$user ->password = crypto::secured_hash($_POST["password"]);	
+			}else{
+				$user ->password = $_POST["password"];
+			}			
 			$date = new DateTime();
 			$strDate = $date->format('Y-m-d H:i:s');			
 			$user ->create_date= $strDate;
@@ -98,24 +126,39 @@
 			$record = users::findOne($id);
 			if(is_array($record)) {				
 				$dbpassword = $record["password"];
-				if(password_verify($_POST["currentpassword"], $dbpassword)){				
-					require_once(__ROOT__.'/util/crypto.php'); 
-					require_once(__ROOT__.'/repo/user.php');
+				require_once(__ROOT__.'/repo/user.php');
+				if(__ENCRYPT == "ON"){
+					if(password_verify($_POST["currentpassword"], $dbpassword)){				
+						require_once(__ROOT__.'/util/crypto.php');					
+						$user = new user();				
+						$user ->id=$id;
+						$user ->firstname = $record["firstname"];
+						$user ->lastname = $record["lastname"];
+						$user ->email=$record["email"];
+						$user ->password = crypto::secured_hash($_POST["newpassword"]);	
+						$date = new DateTime();
+						$strDate = $date->format('Y-m-d H:i:s');			
+						$user ->create_date= $strDate;
+						$user ->save();	
+						echo "ok";	
+					}
+					else{
+						echo "Current password do not match";	
+					}
+				}
+				else{										
 					$user = new user();				
 					$user ->id=$id;
 					$user ->firstname = $record["firstname"];
 					$user ->lastname = $record["lastname"];
-					$user ->email=$record["email"];	
-					$user ->password = crypto::secured_hash($_POST["newpassword"]);
+					$user ->email=$record["email"];						
+					$user ->password = $_POST["newpassword"];
 					$date = new DateTime();
 					$strDate = $date->format('Y-m-d H:i:s');			
 					$user ->create_date= $strDate;
 					$user ->save();	
-					echo "ok";	
-				}
-				else{
-					echo "Current password do not match";	
-				}
+					echo "ok";					
+				}				
 				
 			}else{
 				echo "Not found user id:".$id;	

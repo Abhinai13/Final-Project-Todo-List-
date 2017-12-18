@@ -67,7 +67,7 @@ $('document').ready(function()
 			   {						
 					if(response.indexOf('ok') > 0){									
 						$("#btn-register").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; Registering ...');
-						setTimeout('window.location.href = "/"; ',4000);
+						setTimeout('window.location.href = "/todo"; ',4000);
 					}
 					else{									
 						$("#error").fadeIn(1000, function(){						
