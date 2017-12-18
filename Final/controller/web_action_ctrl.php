@@ -36,24 +36,90 @@
 		if($action == "REGISTER"){		
 			require_once(__ROOT__.'/repo/user.php'); 
 			require_once(__ROOT__.'/util/crypto.php'); 
-			$user = new user();
+			$user = new user();				
+			$user ->id="";
+			$user ->firstname = $_POST["firstname"];
+			$user ->lastname = $_POST["lastname"] ;
+			$user ->email=$_POST["user_email"];			
+			$user ->password = crypto::secured_hash($_POST["password"]);
+			$date = new DateTime();
+			$strDate = $date->format('Y-m-d H:i:s');			
+			$user ->create_date= $strDate;
+			$user ->save();				
+			$array= get_object_vars ($user);
 				
-				$user ->id="";
+			if ($array["id"] > 0){
+				echo "ok";
+			}else{
+				echo " Error occured registering user. ";	
+			}
+		}
+		if($action == "EDITUSER"){					
+			require_once(__ROOT__.'/repo/users.php');  
+			//Get username from database 					
+			$id = $_POST["user_id"];
+			//echo "user id: ".$id;
+			$record = users::findOne($id);
+			if(is_array($record)) {
+				$password = $record["password"];
+				//echo "password: ".$password;
+				require_once(__ROOT__.'/repo/user.php');
+				$user = new user();				
+				$user ->id=$id;
 				$user ->firstname = $_POST["firstname"];
-				$user ->lastname = $_POST["lastname"] ;
-				$user ->email=$_POST["user_email"];			
-				$user ->password = crypto::secured_hash($_POST["password"]);
+				$user ->lastname = $_POST["lastname"];
+				$user ->email=$_POST["email"];	
+				$user ->password = $password;
 				$date = new DateTime();
 				$strDate = $date->format('Y-m-d H:i:s');			
 				$user ->create_date= $strDate;
-				$user ->save();				
-				$array= get_object_vars ($user);
-				
-				if ($array["id"] > 0){
-					echo "ok";
-				}else{
-					echo " Error occured registering user. ";	
+				$user ->save();	
+				// replace session information with changed information.
+				session_start();
+				$arrUser = array(
+					"id"=> $id,
+					"lastname"=> $_POST["lastname"],
+					"firstname"=> $_POST["firstname"],
+					"email"=>$_POST["email"]
+				);
+				//update session userinformation.....
+				$_SESSION["user"] = $arrUser;
+				echo "ok";	
+			}else{
+				echo "Not found user id:".$id;	
+			}		
+						
+		}
+		if($action == "CHANGEPWD"){
+			require_once(__ROOT__.'/repo/users.php');  
+			//Get username from database 					
+			$id = $_POST["user_id"];
+			//echo "user id: ".$id;
+			$record = users::findOne($id);
+			if(is_array($record)) {				
+				$dbpassword = $record["password"];
+				if(password_verify($_POST["currentpassword"], $dbpassword)){				
+					require_once(__ROOT__.'/util/crypto.php'); 
+					require_once(__ROOT__.'/repo/user.php');
+					$user = new user();				
+					$user ->id=$id;
+					$user ->firstname = $record["firstname"];
+					$user ->lastname = $record["lastname"];
+					$user ->email=$record["email"];	
+					$user ->password = crypto::secured_hash($_POST["newpassword"]);
+					$date = new DateTime();
+					$strDate = $date->format('Y-m-d H:i:s');			
+					$user ->create_date= $strDate;
+					$user ->save();	
+					echo "ok";	
 				}
+				else{
+					echo "Current password do not match";	
+				}
+				
+			}else{
+				echo "Not found user id:".$id;	
+			}
 		}
 		if($action == "ADDTASK"){	
 			session_start();	

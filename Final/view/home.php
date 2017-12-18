@@ -87,27 +87,18 @@
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-
-											<!-- <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"> -->
-														<h3><span class="label label-success"><span class="glyphicon glyphicon-remove-circle">&nbsp;Active</span></span></h3>
-										<!--	</div>
-											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> -->
-														
-											<!-- </div> -->
-
+									<h3><span class="label label-success"><span class="glyphicon glyphicon-remove-circle">&nbsp;Active</span></span></h3>
 								</div>
 								<div class="panel-body">
-
-										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">		
-												<?php
-												if(!empty($records)){
-															for ($i = 1; $i <=count($id); $i++)
-																{
-																	if($complete[$i] == "0"){
-																		echo 
-																		"<div class='row'>
-																			<div class='col-lg-9 col-md-9 col-sm-9 col-xs-9'>
-																				<strong>".$id[$i]."  ".$title[$i]."</strong>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">	<?php
+										if(!empty($records)){
+											for ($i = 1; $i <=count($id); $i++)
+											{
+												if($complete[$i] == "0"){
+												echo 
+													"<div class='row'>
+														<div class='col-lg-9 col-md-9 col-sm-9 col-xs-9'>
+															<strong>".$id[$i]."  ".$title[$i]."</strong>
 																				<blockquote>".$body[$i]."</blockquote>
 																			</div>
 																			<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3'>
