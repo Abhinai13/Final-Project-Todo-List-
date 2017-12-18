@@ -32,7 +32,7 @@ $("#addtask_form").validate({
 			$.ajax({
 				
 			type : 'POST',
-			url  : '/todo/controller/web_action_ctrl.php',
+			url  : 'controller/web_action_ctrl.php',
 			data : data,
 			beforeSend: function()
 			{	
@@ -42,7 +42,7 @@ $("#addtask_form").validate({
 			success :  function(response)
 			   {						
 					if(response.indexOf('ok') > 0){									
-						$("#btn-add-task").html('<img src="/todo/resources/img/btn-ajax-loader.gif" /> &nbsp; adding ...');
+						$("#btn-add-task").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; adding ...');
 						//setTimeout('window.location.href = "/todo/view/home.php"; ',2000);
 						$("#error").html('<div class="alert alert-success"> <span class="glyphicon glyphicon-ok"></span> &nbsp; Task Added. Please continue to with additional tasks.</div>');						
 					}

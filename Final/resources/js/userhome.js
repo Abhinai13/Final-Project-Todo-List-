@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	var $modal = $('#add_task_id');
 	$('#addtask').on('click', function(){
-		$modal.load('/todo/view/addtask.php',{'id1': '1', 'id2': '2'},
+		$modal.load('view/addtask.php',{'id1': '1', 'id2': '2'},
 			function(){
 				$modal.modal('show');
 		});
@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 function editTask(id){
 	var $editmodal = $('#edit_task_id');
-	$editmodal.load('/todo/view/edittask.php',{'task_id':id, 'id2': '2'},
+	$editmodal.load('view/edittask.php',{'task_id':id, 'id2': '2'},
 		function(){
 		$editmodal.modal('show');
 	});
@@ -20,7 +20,7 @@ function editTask(id){
 
 function deleteTask(id){
 	var $deletemodal = $('#delete_task_id');
-    $deletemodal.load('/todo/view/deletetask.php',{'task_id':id, 'id2': '2'},
+    $deletemodal.load('view/deletetask.php',{'task_id':id, 'id2': '2'},
     function(){
         $deletemodal.modal('show');
     });
@@ -28,7 +28,7 @@ function deleteTask(id){
 }
 function getInformation(){
     var $infomodal = $('#user_info_id');
-    $infomodal.load('/todo/view/userinfo.php',{'id1':'1', 'id2': '2'},
+    $infomodal.load('view/userinfo.php',{'id1':'1', 'id2': '2'},
     function(){
         $infomodal.modal('show');
     });
@@ -38,7 +38,7 @@ function getInformation(){
 function logout(){	
     $.ajax({
         type: "GET",
-        url: "/todo/controller/web_action_ctrl.php",
+        url: "controller/web_action_ctrl.php",
         data: {
             actionType:'SIGNOUT'
         },

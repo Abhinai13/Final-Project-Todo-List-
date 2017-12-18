@@ -25,6 +25,6 @@
 			 <button type="submit" class="btn btn-primary btn-md" name="btn-delelte-task" id="btn-delelte-task"><span class="glyphicon glyphicon-plus"></span>  DELETE </button> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	  		</div>
 	  	</div>
-		<script src="/todo/resources/js/deletetask.js"></script>
+		<script src="resources/js/deletetask.js"></script>
 	  </form>
  </div>

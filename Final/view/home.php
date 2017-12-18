@@ -24,14 +24,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
+		<base href="/todo/" target="_blank">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>TO-DO</title>
-		<link href="/todo/resources/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link href="/todo/resources/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-		<script type="text/javascript" src="/todo/resources/js/jquery-1.11.3-jquery.min.js"></script>
-		<script type="text/javascript" src="/todo/resources/js/validation.min.js"></script>
-		<link href="/todo/resources/css/style.css" rel="stylesheet" type="text/css" media="screen">
-		<script type="text/javascript" src="/todo/resources/js/userhome.js"></script>
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="resources/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+		<script type="text/javascript" src="resources/js/jquery-1.11.3-jquery.min.js"></script>
+		<script type="text/javascript" src="resources/js/validation.min.js"></script>
+		<link href="resources/css/style.css" rel="stylesheet" type="text/css" media="screen">
+		<script type="text/javascript" src="resources/js/userhome.js"></script>
 	</head>
 	<body>
 	<div id="add_task_id" class="modal fade" tabindex="-1"></div>
@@ -165,6 +166,6 @@
 		</div>
 	</div>
 		</div>
-		<script src="/todo/resources/js/bootstrap.min.js"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
 	</body>
 </html>

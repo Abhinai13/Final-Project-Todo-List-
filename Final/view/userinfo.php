@@ -123,7 +123,7 @@
 				<input type="hidden" name="user_id" id="user_id" value="<?php echo $user["id"];?>"/>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
-			<script src="/todo/resources/js/edituser.js"></script>
+			<script src="resources/js/edituser.js"></script>
 		</form>
 	</div>
 </div>

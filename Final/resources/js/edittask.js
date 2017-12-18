@@ -32,7 +32,7 @@ $("#edittask_form").validate({
 			$.ajax({
 				
 			type : 'POST',
-			url  : '/todo/controller/web_action_ctrl.php',
+			url  : 'controller/web_action_ctrl.php',
 			data : data,
 			beforeSend: function()
 			{	
@@ -42,8 +42,8 @@ $("#edittask_form").validate({
 			success :  function(response)
 			   {						
 					if(response.indexOf('ok') > 0){									
-						$("#btn-edit-task").html('<img src="/todo/resources/img/btn-ajax-loader.gif" /> &nbsp; saving ...');
-						setTimeout('window.location.href = "/todo/view/home.php"; ',2000);
+						$("#btn-edit-task").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; saving ...');
+						setTimeout('window.location.href = "view/home.php"; ',2000);
 					}
 					else{									
 						$("#error").fadeIn(1000, function(){						

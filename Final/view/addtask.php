@@ -34,6 +34,6 @@
 		      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	  		</div>
 	  	</div>
-		<script src="/todo/resources/js/addtask.js"></script>
+		<script src="resources/js/addtask.js"></script>
 	  </form>
  </div>

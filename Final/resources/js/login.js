@@ -46,8 +46,8 @@ $('document').ready(function()
 					//if(response == 'ok'){
 					//console.log("response: " + response);
 					if(response.indexOf("ok")>0){
-						$("#btn-login").html('<img src="/todo/resources/img/btn-ajax-loader.gif" /> &nbsp; Signing In ...');
-						setTimeout('window.location.href = "/todo/view/home.php"; ',4000);
+						$("#btn-login").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; Signing In ...');
+						setTimeout('window.location.href = "view/home.php"; ',4000);
 					}
 					else{									
 						$("#error").fadeIn(1000, function(){						

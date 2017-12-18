@@ -74,7 +74,7 @@ $("#edituser_form").validate({
 			$.ajax({
 			 async: true,  	
 			type : 'POST',
-			url  : '/todo/controller/web_action_ctrl.php',
+			url  : 'controller/web_action_ctrl.php',
 			data : data,
 			beforeSend: function()
 			{	
@@ -84,8 +84,8 @@ $("#edituser_form").validate({
 			success :  function(response)
 			   {						
 					if(response.indexOf('ok') > 0){									
-						$("#submit-user-btn").html('<img src="/todo/resources/img/btn-ajax-loader.gif" /> &nbsp; adding ...');
-						//setTimeout('window.location.href = "/todo/view/home.php"; ',2000);
+						$("#submit-user-btn").html('<img src="resources/img/btn-ajax-loader.gif" /> &nbsp; adding ...');
+						//setTimeout('window.location.href = "view/home.php"; ',2000);
 						$("#error").html('<div class="alert alert-success"> <span class="glyphicon glyphicon-ok"></span> &nbsp; Changed information.</div>');						
 					}
 					else{									

@@ -41,6 +41,6 @@
 		      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	  		</div>
 	  	</div>
-	  	<script src="/todo/resources/js/edittask.js"></script>
+	  	<script src="resources/js/edittask.js"></script>
 	  	</form>
  </div>
